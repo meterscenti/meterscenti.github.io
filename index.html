@@ -1,119 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Pastel Pace</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(to bottom right, #fceff9, #e0f7fa);
-      color: #555;
-    }
+<meta charset="UTF-8">
+<title>Calculator ni mcdo</title>
 
-    header {
-      background: #ffd6e8;
-      padding: 20px;
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      color: #6a4e77;
-      letter-spacing: 2px;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(to bottom right, #fceff9, #e0f7fa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      background: #fff0f6;
-      padding: 10px;
-    }
+  .calculator {
+    background: #ffffffcc;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 260px;
+  }
 
-    nav a {
-      text-decoration: none;
-      color: #6a4e77;
-      font-weight: 500;
-      padding: 5px 10px;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
+  .display {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 18px;
+    text-align: right;
+    background: #fff0f6;
+    color: #6a4e77;
+  }
 
-    nav a:hover {
-      background: #ffd6e8;
-    }
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
 
-    .container {
-      padding: 40px;
-      text-align: center;
-    }
+  button {
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #ffd6e8;
+    color: #6a4e77;
+    transition: 0.2s;
+  }
 
-    .card {
-      background: #ffffffcc;
-      margin: 20px auto;
-      padding: 20px;
-      width: 300px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
+  button:hover {
+    background: #ffb3d9;
+  }
 
-    button {
-      background: #ffd6e8;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 15px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: 0.3s;
-    }
+  .equal {
+    background: #b2ebf2;
+  }
 
-    button:hover {
-      background: #ffb3d9;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #fff0f6;
-      font-size: 12px;
-      color: #777;
-    }
-  </style>
+  .equal:hover {
+    background: #80deea;
+  }
+</style>
 </head>
 
 <body>
 
-<header>
-  🌸 My Pastel Space
-</header>
+<div class="calculator">
+  <input type="text" id="display" class="display" disabled>
 
-<nav>
-  <a href="#">Home</a>
-  <a href="#">About</a>
-  <a href="#">Projects</a>
-</nav>
+  <div class="buttons">
+    <button onclick="clearDisplay()">C</button>
+    <button onclick="append('%')">%</button>
+    <button onclick="append('/')">÷</button>
+    <button onclick="append('*')">×</button>
 
-<div class="container">
+    <button onclick="append('7')">7</button>
+    <button onclick="append('8')">8</button>
+    <button onclick="append('9')">9</button>
+    <button onclick="append('-')">−</button>
 
-  <div class="card">
-    <h2>Welcome 💕</h2>
-    <p>This is your aesthetic pastel website.</p>
-    <button onclick="hello()">Click Me</button>
+    <button onclick="append('4')">4</button>
+    <button onclick="append('5')">5</button>
+    <button onclick="append('6')">6</button>
+    <button onclick="append('+')">+</button>
+
+    <button onclick="append('1')">1</button>
+    <button onclick="append('2')">2</button>
+    <button onclick="append('3')">3</button>
+    <button class="equal" onclick="calculate()">=</button>
+
+    <button onclick="append('0')">0</button>
+    <button onclick="append('.')">.</button>
   </div>
-
-  <div class="card">
-    <h2>About Me 📚</h2>
-    <p>I love soft colors, learning, and creating.</p>
-  </div>
-
 </div>
 
-<footer>
-  ✨ Made with pastel vibes
-</footer>
-
 <script>
-  function hello() {
-    alert("Hello! Welcome to your pastel site 🌸");
+  function append(value) {
+    document.getElementById("display").value += value;
+  }
+
+  function clearDisplay() {
+    document.getElementById("display").value = "";
+  }
+
+  function calculate() {
+    try {
+      document.getElementById("display").value = 
+        eval(document.getElementById("display").value);
+    } catch {
+      document.getElementById("display").value = "Error";
+    }
   }
 </script>
 
